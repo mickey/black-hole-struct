@@ -2,7 +2,7 @@
 # infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification).
 class BlackHoleStruct
   # Current version
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 
   # BlackHoleStruct can be optionally initialized with a Hash
   # @param [Hash] hash Initialize with a hash

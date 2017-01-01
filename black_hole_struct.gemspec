@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.summary       = "BlackHoleStruct is a data structure"
   gem.description   = "BlackHoleStruct is a data structure similar to an OpenStruct allowing autovivification."
   gem.license       = "MIT"
-  gem.homepage      = "https://github.com/mickey/black_hole_struct"
+  gem.homepage      = "https://github.com/mickey/black-hole-struct"
 
   gem.files         = Dir["{lib}/**/*", "LICENSE", "README.md"]
   gem.test_files    = Dir["test/**/*"]
