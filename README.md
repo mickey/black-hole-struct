@@ -32,6 +32,6 @@ puts config.dashboard.time       # #<BlackHoleStruct :from="now-1h" :to="now">
 puts config.dashboard.time.from  # "now-1h"
 ```
 
-### Advanced usage
+## Advanced usage
 
 Check the [documentation](http://www.rubydoc.info/github/mickey/black-hole-struct/master/BlackHoleStruct).
