@@ -3,6 +3,8 @@
 **BlackHoleStruct** is a data structure similar to an `OpenStruct`, that allows
 infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification).  
 
+![](https://media.giphy.com/media/kxAX99ncvbPk4/giphy.gif)
+
 ## Installation
 
 Add it to your Gemfile:
