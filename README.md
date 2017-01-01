@@ -34,4 +34,4 @@ puts config.dashboard.time.from  # "now-1h"
 
 ### Advanced usage
 
-Check the [documentation]().
+Check the [documentation](http://www.rubydoc.info/github/mickey/black-hole-struct/master/BlackHoleStruct).
