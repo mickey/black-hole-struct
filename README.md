@@ -30,6 +30,24 @@ config.dashboard.time.to = "now"
 puts config.dashboard.theme      # "white"
 puts config.dashboard.time       # #<BlackHoleStruct :from="now-1h" :to="now">
 puts config.dashboard.time.from  # "now-1h"
+
+config[:connection][:host] = "localhost"
+config[:connection][:port] = 3000
+
+puts config.to_h
+# {
+#   connection: {
+#     host: "localhost",
+#     port: 3000
+#   }
+#   dashboard: {
+#     theme: "white",
+#     time: {
+#       from: "now-1h",
+#       to: "now"
+#     }
+#   }
+# }
 ```
 
 ## Advanced usage
