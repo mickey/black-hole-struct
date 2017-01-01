@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    black_hole_struct (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.10.1)
+    yard (0.9.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  black_hole_struct!
+  minitest
+  yard
+
+BUNDLED WITH
+   1.13.6
