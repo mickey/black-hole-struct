@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mickey/black-hole-struct/tree/master.svg?style=svg)](https://circleci.com/gh/mickey/black-hole-struct/tree/master)
+
 # BlackHoleStruct
 
 **BlackHoleStruct** is a data structure similar to an `OpenStruct`, that allows
