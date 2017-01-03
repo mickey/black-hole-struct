@@ -2,8 +2,9 @@
 
 # BlackHoleStruct
 
-**BlackHoleStruct** is a data structure similar to an `OpenStruct`, that allows
-infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification).  
+**BlackHoleStruct** is a data structure similar to an `OpenStruct` that allows:
+- infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification)
+- deep merging of BlackHoleStruct/Hash
 
 ![](https://media.giphy.com/media/kxAX99ncvbPk4/giphy.gif)
 
@@ -52,7 +53,23 @@ puts config.to_h
 #     }
 #   }
 # }
+
+config = BlackHoleStruct.new(theme: "white", connection: {port: 3000})
+config.deep_merge!(connection: {host: 'localhost'})
+puts config.to_h
+# {
+#   connection: {
+#     host: "localhost",
+#     port: 3000
+#   }
+#   theme: "white"
+# }
+
 ```
+
+## Is it any good
+
+[Yes](https://news.ycombinator.com/item?id=3067434)
 
 ## Advanced usage
 

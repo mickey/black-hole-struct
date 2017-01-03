@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    black_hole_struct (0.1.0)
+    black_hole_struct (0.1.2)
 
 GEM
   remote: https://rubygems.org/

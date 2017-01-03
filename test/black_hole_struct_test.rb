@@ -89,12 +89,44 @@ class BlackHoleStructTest < Minitest::Test
     }
   end
 
-  def test_merge
+  def test_merge!
     @subject.theme = "white"
     @subject.merge!(size: 5)
 
+    assert_equal @subject.to_h, { theme: "white", size: 5 }
+  end
+
+  def test_merge
+    @subject.theme = "white"
+    merged = @subject.merge(size: 5)
+
+    assert_equal merged.to_h, { theme: "white", size: 5 }
+    assert_equal @subject.to_h, { theme: "white" }
+  end
+
+  def test_deep_merge!
+    @subject.theme = "white"
+    @subject.connection.port = 3000
+    @subject.deep_merge!(connection: { host: '127.0.0.1' })
+
     assert_equal @subject.to_h, {
-      theme: "white", size: 5
+      theme: "white",
+      connection: { port: 3000, host: '127.0.0.1' }
+    }
+  end
+
+  def test_deep_merge
+    @subject.theme = "white"
+    @subject.connection.port = 3000
+    merged = @subject.deep_merge(connection: { host: '127.0.0.1' })
+
+    assert_equal merged.to_h, {
+      theme: "white",
+      connection: { port: 3000, host: '127.0.0.1' }
+    }
+    assert_equal @subject.to_h, {
+      theme: "white",
+      connection: { port: 3000 }
     }
   end
 

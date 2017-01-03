@@ -2,7 +2,7 @@
 # infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification).
 class BlackHoleStruct
   # Current version
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 
   # BlackHoleStruct can be optionally initialized with a Hash
   # @param [Hash] hash Initialize with a hash
@@ -56,17 +56,48 @@ class BlackHoleStruct
     @table.each_pair
   end
 
-  # Adds the contents of other_hash to hsh.
-  # If no block is specified, entries with duplicate keys are overwritten with the values from other_hash,
-  # otherwise the value of each duplicate key is determined by calling the block with the key,
-  # its value in hsh and its value in other_hash.
+  # Returns a new hash with self and other_hash merged.
+  # @param [Hash] other_hash
+  # @return the final hash
+  def merge(other_hash)
+    self.dup.merge!(other_hash)
+  end
+
+  # Same as merge, but modifies self.
   # @param [Hash] other_hash
   # @return the final hash
   def merge!(other_hash)
     # no deep merge
     @table = self.to_h.merge!(other_hash)
+    self
   end
   alias :update :merge!
+
+  # Returns a new hash with self and other_hash merged recursively.
+  # It only merges Hash recursively.
+  # @param [Hash] other_hash
+  # @return the final hash
+  def deep_merge(other_hash)
+    self.dup.deep_merge!(other_hash)
+  end
+
+  # Same as deep_merge, but modifies self.
+  # @param [Hash] other_hash
+  # @return the final hash
+  def deep_merge!(other_hash)
+    other_hash.each_pair do |current_key, other_value|
+      this_value = @table[current_key.to_sym]
+
+      if (this_value.is_a?(Hash) || this_value.is_a?(self.class)) &&
+        (other_value.is_a?(Hash) || other_value.is_a?(self.class))
+        @table[current_key.to_sym] = this_value.deep_merge(other_value)
+      else
+        @table[current_key.to_sym] = other_value
+      end
+    end
+
+    self
+  end
 
   # Converts self to the hash
   # @return [Hash]
@@ -88,6 +119,11 @@ class BlackHoleStruct
   alias :to_s :inspect
 
   private
+
+  def initialize_copy(other)
+    super
+    @table = @table.clone
+  end
 
   def method_missing(name, *args)
     if @table[name.to_sym]
