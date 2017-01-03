@@ -13,13 +13,13 @@
 Add it to your Gemfile:
 
 ```ruby
-gem "black-hole-struct"
+gem "black_hole_struct"
 ```
 
 Or install the gem manually:
 
 ```sh
-$ gem install black-hole-struct
+$ gem install black_hole_struct
 ```
 
 ## Basic Usage
