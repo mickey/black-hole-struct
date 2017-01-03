@@ -2,7 +2,7 @@
 # infinite chaining of attributes or [autovivification](https://en.wikipedia.org/wiki/Autovivification).
 class BlackHoleStruct
   # Current version
-  VERSION = "0.1.2"
+  VERSION = "0.1.3"
 
   # BlackHoleStruct can be optionally initialized with a Hash
   # @param [Hash] hash Initialize with a hash
@@ -49,12 +49,17 @@ class BlackHoleStruct
     @table[key.to_sym] = self.class.new
   end
 
-  # Calls block once for each key in hsh, passing the key-value pair as parameters.
+  # Calls block once for each key passing the key-value pair as parameters.
   # if no block is given, an Enumerator is returned instead.
   # @yield [key, value]
-  def each_pair
-    @table.each_pair
+  def each_pair(&block)
+    return @table.each_pair unless block
+
+    @table.each_pair do |key, value|
+      yield key, value
+    end
   end
+  alias :each :each_pair
 
   # Returns a new hash with self and other_hash merged.
   # @param [Hash] other_hash
